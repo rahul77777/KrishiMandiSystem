@@ -1,0 +1,86 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>KrishiMandi Storage System</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <style type="text/css">
+    
+    .gradient-custom-3 {
+    background: #84fab0;
+    background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
+    background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
+    }
+  .gradient-custom-4 {
+    background: #84fab0;
+    background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+    background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
+    }
+  </style>
+</head>
+<body>
+  {% include 'Godowns/Navbar.html' %}
+  {% block content %}
+
+  <section class="vh-100 bg-image" >
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+      <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="card" style="border-radius: 15px;">
+              <div class="card-body p-5">
+                <h2 class="text-uppercase text-center mb-5">WelCome back to KrishiMandi System</h2>
+
+                <form  action="{% url 'Login' %}" method="post">
+                  {% csrf_token %}
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example3cg">User_Name</label>
+                    <input type="text" id="form3Example3cg" class="form-control form-control-lg" name="username" />
+                  
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example4cg">Password</label>
+                    <input type="password" id="form3Example4cg" class="form-control form-control-lg" name="password" />
+                  
+                  </div>
+
+                  {% for message in messages %}
+
+                    <div class="alert alert-success">
+                        <a class="close" href="#" data-dismiss="alert">×</a>
+
+                        {{ message }}
+
+                    </div>
+                {% endfor %}
+
+                
+
+                  <div class="d-flex justify-content-center">
+                    
+                    <button type="submit">Login</button>
+                  </div>
+                  <p class="text-center text-muted mt-5 mb-0">Create an account? <a href="{% url 'Registration' %}" class="fw-bold text-body"><u>Register here</u></a></p>
+                </form>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endblock %}
+</body>
+
+</html>

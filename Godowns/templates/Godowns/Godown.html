@@ -1,0 +1,156 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Krishi Mandi</title>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  
+<style>
+.container
+{
+border:2px solid #4CAF50;
+padding:20px;
+height:200px;
+}
+#inputdefault {
+  margin-right: 20px; //you want space 
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}n-right: 20px; //you want space 
+}
+</style>
+</head>
+<body style="background-color:lightcyan;">
+  {% include 'Godowns/Navbar.html' %}
+  {% block content %}
+
+      <form action="{% url 'Godown_details' %}" method="get">
+ {% csrf_token %}
+        <div class="container" align="center" >
+        <b><center><h2>View Godown Details</h2></center><b>
+        </br>
+<!--
+        City:  <select name="city" id="inputdefault">
+          <option value="City_name">Select City Name</option>
+          <option value="Latur">Latur</option>
+          <option value="Kolhapur">Kolhapur</option>
+          <option value="Pune">Pune</option>
+          
+          <option value="Borowali">Borowali</option>
+          <option value="Bhiwandi">Bhiwandi</option>
+          <option value="Vashi">Vashi</option>
+          <option value="Manmad">Manmad</option>
+          <option value="Ambad">Ambad</option>
+          <option value="Nanded">Nanded</option>
+
+          <option value="Maliwada">Maliwada</option>
+          <option value="Jalna">Jalna</option>
+          <option value="Jalgaon">Jalgaon</option>
+          <option value="Amalner">Amalner</option>
+          <option value="Dhule">Dhule</option>
+         
+          <option value="Dondaicha">Dondaicha</option>
+          <option value="Parbhani">Parbhani</option>
+          <option value="Bramhawadi">Bramhawadi</option>
+          <option value="Amaravati">Amaravati</option>
+          <option value="Aurangabad">Aurangabad</option>
+          <option value="Ajni">Ajni</option>
+          <option value="Wardha">Wardha</option>
+      
+          <option value="Yawatmal">Yawatmal</option>
+          
+          <option value="Washim">Washim</option>
+          <option value="Akola">Akola</option>
+          <option value="Chandrapur">Chandrapur</option>
+          <option value="Shelgaon">Shelgaon</option>
+          <option value="Bhoyar">Bhoyar</option>
+          <option value="Chandur">Chandur</option>
+          <option value="Warora">Warora</option>
+          <option value="Tumsar">Tumsar</option>
+          <option value="Amalner">Amalner</option>
+          <option value="Ahmadnagar">Ahmadnagar</option>
+          <option value="Morgaon">Morgaon</option>
+          <option value="Ratnagiri">Ratnagiri</option>
+          <option value="Solapur">Solapur</option>
+          <option value="Mehkar">Mehkar</option>
+          <option value="Karad">Karad</option>
+          <option value="Sangli">Sangli</option>
+          <option value="Miraj">Miraj</option>
+          <option value="Kurduwadi">Kurduwadi</option>
+          <option value="Sangli">Sangli</option>
+          <option value="Sada">Sada</option>
+          <option value="Goa">Goa</option>
+
+        </select>
+-->
+
+         Food Type: <select name="type" id="inputdefault">
+          <option value="foodtype">Select Food Type</option>
+          <option value="Jowar">Jowar</option>
+          <option value="Onion">Onion</option>
+          <option value="Rice">Rice</option>
+          <option value="Soyabean">Soyabean</option>
+          <option value="Tur">Tur</option>
+          <option value="Wheat">Wheat</option>
+          </select>
+          
+
+          <input type="submit" value="Submit">
+          </div>
+       </form> 
+       
+       <br/>
+      <b><center><h2> Godown Details:</h2></center><b>
+      
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>City</th>
+          <th>Food Type</th>
+          <th>Capacity </th>
+          <th>Location</th>   
+        </tr>
+
+        {% for i in godown_data %}
+        <tr>
+          <td>{{i.Name}}</td>
+          <td>{{i.City}}</td>
+          <td>{{i.Food_Type}}</td>
+          <td>{{i.Capacity}}</td>        
+          <td>{{i.Location}}</td>
+         
+        </tr>
+       {% endfor %}
+      </table>
+      </div>
+      <script>
+
+      </script>
+
+      {% endblock %}
+</body>
+
+      
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>
